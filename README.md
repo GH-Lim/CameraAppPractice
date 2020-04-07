@@ -2,6 +2,8 @@
 
 ## 권한 설정
 
+외부 저장소 읽기 및 쓰기 권한 등록
+카메라가 있는 디바이스에서만 사용 가능하게 설정
 ```xml
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -10,6 +12,7 @@
         android:required="true" />
 ```
 
+사용자에게 승인 받아야하는 권한을 리스트로 만듦
 ```kotlin
 var permission_list = arrayOf(
     Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -17,6 +20,7 @@ var permission_list = arrayOf(
 )
 ```
 
+마시멜로우(Android M) 버전 이상에서만 사용자에게 물어보는 코드 작성
 ```kotlin
 fun checkPermission(){
     if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
@@ -36,6 +40,7 @@ fun checkPermission(){
 
 ## 카메라로 찍은 이미지 가져오기
 
+Activity의 Result 코드. 해당 코드로 반환된 결과를 보여주기 위해 설정
 ```kotlin
 val REQUEST_IMAGE_CAPTURE = 1
 ```
